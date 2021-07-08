@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="partials/head :: head('home')"/>
+<body>
+<h1>Floatme Home Page</h1>
+<div>
+    <div class="btn-group btn-group-lg" role="group" aria-label="Button group with nested dropdown">
+        <button type="button" class="btn btn-info">People</button>
+        <button type="button" class="btn btn-secondary">Jobs</button>
+
+        <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Add
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href="#">Person</a>
+                <a class="dropdown-item" href="#">Job</a>
+            </div>
+        </div>
+    </div>
+</div>
+<foot th:replace="partials/foot :: foot"/>
+</body>
+</html>

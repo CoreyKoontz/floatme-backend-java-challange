@@ -1,5 +1,7 @@
 package com.floatme.floatme.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.mysql.cj.protocol.ColumnDefinition;
 
 import javax.persistence.*;
@@ -25,7 +27,8 @@ public class Person {
     @Column(nullable = false)
     private String dateUpdated;
 
-    @OneToOne
+    @ManyToOne
+    @JsonManagedReference
     private Job job;
 
 
