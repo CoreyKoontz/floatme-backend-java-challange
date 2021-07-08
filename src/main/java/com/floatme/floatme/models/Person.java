@@ -25,8 +25,8 @@ public class Person {
     @Column(nullable = false)
     private String dateUpdated;
 
-//    @OneToOne // --- Not yet applicable ---
-//    private Job position;
+    @OneToOne
+    private Job job;
 
 
     public Person() {
