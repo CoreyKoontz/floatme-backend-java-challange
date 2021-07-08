@@ -1,6 +1,9 @@
 package com.floatme.floatme.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "jobs")
@@ -15,6 +18,10 @@ public class Job {
 
     @Column(nullable = false)
     private int salary;
+
+    @OneToMany(mappedBy = "name")
+    @JsonBackReference
+    private List<Person> people;
 
     public Job() {
     }
