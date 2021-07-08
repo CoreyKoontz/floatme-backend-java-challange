@@ -22,4 +22,9 @@ public class PersonController {
         return personDao.findAll();
     }
 
+    @GetMapping("/people/ajax")
+    public String viewAllPeopleWithAjax(){
+        return "/people/home";
+    }
+
 }
