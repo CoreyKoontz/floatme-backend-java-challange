@@ -1,11 +1,12 @@
 "use strict";
 
 // Ajax request for all People:
-(function($) {
+(function ($) {
     let request = $.ajax({'url': '/people.json'});
     request.done(function (people) {
         let html = '';
-        people.forEach(function(person) {
+        let updateLink = '/update/';
+        people.forEach(function (person) {
             html += '<div class="card-deck">';
             html += '<div class="card">';
             html += '<div class="card-body">';
@@ -14,8 +15,9 @@
             html += '<h6 class="card-subtitle mb-2 text-muted">Position: ' + person.job.jobTitle + '</h6>';
             html += '<p class="card-text">Joined: ' + person.dateJoined + '</p>';
             html += '<p class="card-text">Last Updated: ' + person.dateUpdated + '</p>';
-            html += '<a class="card-link">Update' + '</a>';
-            html += '<a class="card-link">Delete' + '</a>';
+            // html += '<a class="card-link btn btn-warning" href="/person/' + person.id + '/edit/">Edit</a>';
+            html += '<form class="form-inline" action="person/' + person.id + '/delete" method="post"><a class="card-link btn btn-warning" href="/person/' + person.id + '/edit/">Edit</a><button class="btn btn-danger">Delete</button></form>';
+            // html += '<form action="/person/delete/' + person.id + '" method="post"><button class="btn btn-danger">Delete</button></form>';
             html += '</div>';
             html += '</div>';
             html += '</div>';
@@ -26,11 +28,11 @@
 
 // // Ajax request for all Jobs:
 // ISSUE: Go back and fix "Current Employee" field ****
-(function($) {
+(function ($) {
     let request = $.ajax({'url': '/jobs.json'});
     request.done(function (jobs) {
         let html = '';
-        jobs.forEach(function(job) {
+        jobs.forEach(function (job) {
             html += '<div class="card-deck">';
             html += '<div class="card">';
             html += '<div class="card-body">';

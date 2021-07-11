@@ -1,8 +1,6 @@
 package com.floatme.floatme.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.mysql.cj.protocol.ColumnDefinition;
 
 import javax.persistence.*;
 
@@ -21,10 +19,10 @@ public class Person {
     @Column(nullable = false)
     private byte age;
 
-    @Column(nullable = false)
+    @Column
     private String dateJoined;
 
-    @Column(nullable = false)
+    @Column
     private String dateUpdated;
 
     @ManyToOne
@@ -35,12 +33,13 @@ public class Person {
     public Person() {
     }
 
-    public Person(long id, String name, byte age, String dateJoined, String dateUpdated) {
+    public Person(long id, String name, byte age, String dateJoined, String dateUpdated, Job job) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.dateJoined = dateJoined;
         this.dateUpdated = dateUpdated;
+        this.job = job;
     }
 
     public long getId() {
@@ -81,5 +80,13 @@ public class Person {
 
     public void setDateUpdated(String dateUpdated) {
         this.dateUpdated = dateUpdated;
+    }
+
+    public Job getJob() {
+        return job;
+    }
+
+    public void setJob(Job job) {
+        this.job = job;
     }
 }

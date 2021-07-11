@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head th:replace="partials/head :: head('home')"/>
+<body>
+<form th:action="'/person/' + ${id} + '/edit'" th:method="POST" th:object="${person}">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" th:field="*{name}">
+    </div>
+    <div class="form-group">
+        <label for="age">Age</label>
+        <input type="text" class="form-control" id="age" th:field="*{age}">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">Position</label>
+        <select class="form-control" id="exampleFormControlSelect1" th:field="*{job}">
+           <div th:each="job: ${jobList}">
+            <option th:text="${job.jobTitle}" th:value="${job.id}"/>
+           </div>
+        </select>
+    </div>
+    <button class="btn btn-warning" type="submit">Update</button>
+</form>
+
+<th:block th:replace="partials/scripts :: scripts"/>
+</body>
+</html>
